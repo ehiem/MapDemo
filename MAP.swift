@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MAP: View {
     @StateObject private var viewModel = MAPModel()
+    @State private var search: String = ""
     
     var body: some View {
         NavigationView {
@@ -19,7 +20,13 @@ struct MAP: View {
                     .onAppear {
                         viewModel.checkIfLocationServicesAreEnabled()
                     }
-                   
+                ZStack {
+                    
+                    TextField("Search", text: $search, onEditingChanged: <#T##(Bool) -> Void#>)
+                    {
+                        
+                    }
+                }
                 Button(action: {
                     
                     withAnimation {
