@@ -4,43 +4,31 @@
 //
 //  Created by Scholar on 6/27/23.
 //
-
-import MapKit
 import SwiftUI
 
-struct ContentView: View {
-    @State var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: 40.7,
-            longitude: -74),
-        span: MKCoordinateSpan(
-            latitudeDelta: 40,
-            longitudeDelta: 40
-        )
-    )
-    
+struct ContentView : View {
     var body: some View {
         NavigationView {
             VStack {
-                Map(coordinateRegion: $region)
-                
-                Button(action: {
-                    
-                    withAnimation {
-                    region.span = MKCoordinateSpan(
-                        latitudeDelta: 5,
-                        longitudeDelta: 5
-                    )
-                }
-                    
-                }, label: {
-                    Text("Zoom In")
+                Text("This is the main page")
+                NavigationLink(destination: MAP()) {
+                    Text("Map")
                         .bold()
-                        .frame(width: 250, height: 50, alignment: .center)
-                        .background(Color.pink)
-                        .cornerRadius(8)
-                        .foregroundColor(.white)
-                })
+                        .background(Color.red)
+                        .foregroundColor(Color.white)
+                }
+            }
+        }
+    }
+}
+var body: some View {
+    NavigationView {
+        VStack {
+            NavigationLink(destination: MAP()) {
+                Text("Info")
+                    .bold()
+                    .background(Color.red)
+                    .foregroundColor(Color.white)
             }
         }
     }
@@ -48,6 +36,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MAP()
     }
 }
