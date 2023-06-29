@@ -22,10 +22,11 @@ struct MAP: View {
                     }
                 ZStack {
                     
-                    TextField("Search", text: $search, onEditingChanged: <#T##(Bool) -> Void#>)
+                    TextField("Search", text: $search, onEditingChanged: { _ in })
                     {
-                        
-                    }
+                    //commit here
+                    }.textFieldStyle(RoundedBorderTextFieldStyle())
+                        .offset(y: -12)
                 }
                 Button(action: {
                     
